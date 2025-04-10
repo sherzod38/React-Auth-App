@@ -9,17 +9,13 @@ export const AuthProvider = ({ children }) => {
             setUser(JSON.parse(storedUser));
         }
     }, []);
-    // Yagona login funksiyasi (async versiyasi)
     const login = async (userData) => {
-        try {
-            setUser(userData);
-            localStorage.setItem('user', JSON.stringify(userData));
-            return true;
+        if (!userData.username || !userData.email) {
+            throw new Error('Foydalanuvchi ma\'lumotlari to\'liq emas');
         }
-        catch (error) {
-            console.error('Login error:', error);
-            return false;
-        }
+        setUser(userData);
+        localStorage.setItem('user', JSON.stringify(userData));
+        return true;
     };
     const logout = () => {
         setUser(null);

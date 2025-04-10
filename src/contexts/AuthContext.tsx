@@ -8,7 +8,7 @@ interface User {
 
 interface AuthContextType {
   user: User | null;
-  login: (userData: User) => Promise<boolean>; // async funksiya ekanligini bildiradi
+  login: (userData: User) => Promise<boolean>;
   logout: () => void;
   isAuthenticated: boolean;
 }
@@ -25,16 +25,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   }, []);
 
-  // Yagona login funksiyasi (async versiyasi)
-  const login = async (userData: User): Promise<boolean> => {
-    try {
-      setUser(userData);
-      localStorage.setItem('user', JSON.stringify(userData));
-      return true;
-    } catch (error) {
-      console.error('Login error:', error);
-      return false;
+  const login = async (userData: User) => {
+    if (!userData.username || !userData.email) {
+      throw new Error('Foydalanuvchi ma\'lumotlari to\'liq emas');
     }
+    
+    setUser(userData);
+    localStorage.setItem('user', JSON.stringify(userData));
+    return true;
   };
 
   const logout = () => {

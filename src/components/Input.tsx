@@ -1,45 +1,48 @@
 import React from 'react';
-import { STYLE_VARS } from '../styles/variables';
 
-// Yangilangan InputProps interfeysi
-type InputProps = {
+interface InputProps {
   label?: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   type?: 'text' | 'email' | 'password';
-  name?: string; // <- name property qo'shildi
-  style?: React.CSSProperties;
-};
+  name?: string;
+  error?: string;
+}
 
-const Input: React.FC<InputProps> = ({ 
+export const Input: React.FC<InputProps> = ({ 
   label, 
-  value, 
-  onChange, 
-  type = 'text',
-  name, // <- name qabul qilinadi
-  style = {} 
+  error, 
+  ...props 
 }) => {
-  const baseStyle: React.CSSProperties = {
-    width: '100%',
-    padding: STYLE_VARS.sizes.inputPadding,
-    boxSizing: 'border-box',
-    border: '1px solid #ddd',
-    borderRadius: STYLE_VARS.sizes.borderRadius,
-    fontFamily: STYLE_VARS.fonts.main,
-  };
-
   return (
     <div style={{ marginBottom: '15px' }}>
-      {label && <label style={{ display: 'block', marginBottom: '5px' }}>{label}</label>}
+      {label && (
+        <label style={{ 
+          display: 'block', 
+          marginBottom: '5px',
+          color: error ? 'red' : 'inherit'
+        }}>
+          {label}
+        </label>
+      )}
       <input
-        type={type}
-        value={value}
-        onChange={onChange}
-        name={name} // <- name input elementiga uzatiladi
-        style={{ ...baseStyle, ...style }}
+        {...props}
+        style={{
+          width: '100%',
+          padding: '8px',
+          border: error ? '1px solid red' : '1px solid #ddd',
+          borderRadius: '4px'
+        }}
       />
+      {error && (
+        <div style={{ 
+          color: 'red', 
+          fontSize: '0.8rem',
+          marginTop: '5px'
+        }}>
+          {error}
+        </div>
+      )}
     </div>
   );
 };
-
-export default Input;

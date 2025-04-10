@@ -7,9 +7,9 @@ export const ProfilePage = () => {
     return (_jsxs("div", { style: {
             maxWidth: '600px',
             margin: '0 auto',
-            padding: '20px',
-            position: 'relative' // Orqaga tugmasi uchun
-        }, children: [_jsx("button", { onClick: () => navigate('/'), style: {
+            padding: '2rem',
+            position: 'relative'
+        }, children: [_jsx("button", { onClick: () => navigate(-1), style: {
                     position: 'absolute',
                     top: '20px',
                     left: '20px',
@@ -18,7 +18,7 @@ export const ProfilePage = () => {
                     border: '1px solid #ddd',
                     borderRadius: '4px',
                     cursor: 'pointer'
-                }, children: "\u2190 Bosh sahifaga qaytish." }), _jsx("h1", { style: { textAlign: 'center' }, children: "Profil Sahifasi" }), user && (_jsxs("div", { style: {
+                }, children: "\u2190 Orqaga" }), _jsx("h1", { style: { textAlign: 'center' }, children: "Profil Sahifasi" }), user && (_jsxs("div", { style: {
                     marginTop: '50px',
                     padding: '20px',
                     border: '1px solid #ddd',

@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
-export const ProfilePage = () => {
+export const ProfilePage: React.FC = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
 
@@ -9,13 +9,12 @@ export const ProfilePage = () => {
     <div style={{ 
       maxWidth: '600px', 
       margin: '0 auto', 
-      padding: '20px',
-      position: 'relative' // Orqaga tugmasi uchun
+      padding: '2rem',
+      position: 'relative'
     }}>
-      {/* Orqaga qaytish tugmasi */}
       <button
-          onClick={() => navigate('/')} // Bosh sahifaga qaytish
-          style={{
+        onClick={() => navigate(-1)}
+        style={{
           position: 'absolute',
           top: '20px',
           left: '20px',
@@ -26,7 +25,7 @@ export const ProfilePage = () => {
           cursor: 'pointer'
         }}
       >
-        ← Bosh sahifaga qaytish.
+        ← Orqaga
       </button>
 
       <h1 style={{ textAlign: 'center' }}>Profil Sahifasi</h1>
