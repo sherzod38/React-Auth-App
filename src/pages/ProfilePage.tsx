@@ -13,7 +13,7 @@ export const ProfilePage: React.FC = () => {
       position: 'relative'
     }}>
       <button
-        onClick={() => navigate(-1)}
+        onClick={() => navigate(-1)} // -1 brauzer historysida bir qadam orqaga
         style={{
           position: 'absolute',
           top: '20px',
@@ -25,7 +25,7 @@ export const ProfilePage: React.FC = () => {
           cursor: 'pointer'
         }}
       >
-        ← Orqaga
+        ← Bosh sahifaga qaytish.
       </button>
 
       <h1 style={{ textAlign: 'center' }}>Profil Sahifasi</h1>
