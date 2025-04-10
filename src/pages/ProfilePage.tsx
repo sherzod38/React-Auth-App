@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
-export const ProfilePage: React.FC = () => {
+export const ProfilePage = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
 
@@ -9,11 +9,12 @@ export const ProfilePage: React.FC = () => {
     <div style={{ 
       maxWidth: '600px', 
       margin: '0 auto', 
-      padding: '2rem',
-      position: 'relative'
+      padding: '20px',
+      position: 'relative' // Orqaga tugmasi uchun
     }}>
+      {/* Bosh sahifaga qaytish tugmasi */}
       <button
-        onClick={() => navigate(-1)} // -1 brauzer historysida bir qadam orqaga
+        onClick={() => navigate('/')} // '/' - bu bosh sahifaga yo'l
         style={{
           position: 'absolute',
           top: '20px',
@@ -22,20 +23,23 @@ export const ProfilePage: React.FC = () => {
           backgroundColor: '#f0f0f0',
           border: '1px solid #ddd',
           borderRadius: '4px',
-          cursor: 'pointer'
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center'
         }}
       >
-        ← Bosh sahifaga qaytish.
+        <span style={{ marginRight: '5px' }}>←</span> Bosh sahifa
       </button>
 
-      <h1 style={{ textAlign: 'center' }}>Profil Sahifasi</h1>
+      <h1 style={{ textAlign: 'center', marginTop: '40px' }}>Profil Sahifasi</h1>
       
       {user && (
         <div style={{
-          marginTop: '50px',
+          marginTop: '30px',
           padding: '20px',
           border: '1px solid #ddd',
-          borderRadius: '8px'
+          borderRadius: '8px',
+          backgroundColor: '#f9f9f9'
         }}>
           <p><strong>Foydalanuvchi nomi:</strong> {user.username}</p>
           <p><strong>Email:</strong> {user.email}</p>
