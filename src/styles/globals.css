@@ -1,0 +1,14 @@
+/* Global CSS variables */
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #2196F3;
+    --text-color: #333;
+    --font-main: 'Arial', sans-serif;
+  }
+  
+  /* Base styles */
+  body {
+    margin: 0;
+    font-family: var(--font-main);
+    color: var(--text-color);
+  }
